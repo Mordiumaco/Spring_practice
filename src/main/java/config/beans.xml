@@ -1,7 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<context:property-placeholder location="classpath:config/value.properties"/>
+		
+		
+	<bean id="hello3" class="myspring.di.xml.Hello" >
+		<property name="name" value="${myname}"/>
+		<property name="printer" ref="${myprinter}"/>
+		<property name="names">
+			<list>
+				<value>${value1}</value>
+				<value>${value2}</value>
+				<value>${value3}</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="hello2"  class="myspring.di.xml.Hello">
+		<!-- 
+			Constructor Injection Type
+			
+		 -->
+		<!-- 인덱스 지정방법 -->
+		<!-- 		
+		<constructor-arg index="0" value="Spring"></constructor-arg>
+		<constructor-arg index="1" ref = "printer"></constructor-arg>
+		 -->
+		
+		<!-- Parameter 이름 지정 방법 -->
+		<constructor-arg name="name" value="Spring"></constructor-arg>
+		<constructor-arg name="printer" ref ="printer"></constructor-arg>
+		<property name="names">
+			<list>
+				<value>AOP</value>
+				<value>Spring</value>
+				<value>DI</value>
+			</list>
+		</property>
+	</bean>
+
 
 	<bean id="hello"  class="myspring.di.xml.Hello">
 		<!-- 
@@ -9,13 +50,19 @@
 			printer도 마찬가지고 셋팅이 되지만 인터페이스 이다.
 			printer은 인터페이스 이므로 이에대한 구현 클래스를 셋팅해줄 필요가 있다. 
 			이에 ref 라는 속성에 key값을 넣어줘 키값과 일치하는 빈즈의 클래스를 가져온다.
-			
 		 -->
 		<!-- 매핑되는 메서드 -->
 		<!-- setName(name) -->
 		<property name="name" value="Spring"></property> 
 		<!-- setPrinter(Printer) -->
 		<property name="printer" ref="printer"></property>
+		<property name="names">
+			<list>
+				<value>A</value>
+				<value>B</value>
+				<value>C</value>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="printer" class="myspring.di.xml.StringPrinter"/>
