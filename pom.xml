@@ -11,6 +11,14 @@
 	<java.version>1.8</java.version>
 </properties>
 
+<repositories>
+	<!-- ojdbc6 설정시 -->
+	<repository>
+		<id>codelds</id>
+		<url>https://code.lds.org/nexus/content/groups/main-repo</url>
+	</repository>
+	</repositories>
+
 <build>
 	<plugins>
 		<plugin>
@@ -47,13 +55,42 @@
 	    <scope>test</scope>
 	</dependency>
   	
-  	<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-jdbc</artifactId>
-	    <version>3.2.7.RELEASE</version>
+	    <version>3.2.17.RELEASE</version>
 	</dependency>
+
   	
+	<!-- ojdbc -->
+	<dependency>
+		<groupId>com.oracle</groupId>
+		<artifactId>ojdbc6</artifactId>
+		<version>12.1.0.2</version>
+		<scope>runtime</scope>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjrt</artifactId>
+	    <version>1.7.4</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjweaver</artifactId>
+	    <version>1.7.4</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-aop</artifactId>
+	    <version>5.1.1.RELEASE</version>
+	</dependency>
+
+		
 </dependencies>
 </project>
 
