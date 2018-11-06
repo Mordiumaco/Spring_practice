@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component("stringPrinter")
 public class StringPrinter implements Printer {
 	
-	private StringBuffer buffer = new StringBuffer();
+	private StringBuffer buffer ＝ new StringBuffer();
 	
 
 	@Override
